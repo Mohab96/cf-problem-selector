@@ -1,6 +1,5 @@
 # Codeforces Problem Selector
 
-![GitHub](https://img.shields.io/github/license/Mohab96/cf-problem-selector)
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 
 ## **Table of Contents**
