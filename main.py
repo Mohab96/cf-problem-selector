@@ -21,9 +21,9 @@ def remove_solved_problems():
                     submission.get('problem').get('name'))
 
 
-DEFAULT_MIN_RATE = 800
-DEFAULT_MAX_RATE = 3500
-DEFAULT_PROBLEMS_CNT = 5
+DEFAULT_MIN_RATE = 1200
+DEFAULT_MAX_RATE = 1500
+DEFAULT_PROBLEMS_CNT = 1
 
 
 def get_args():
@@ -31,7 +31,7 @@ def get_args():
 
     parser.add_argument("-o", "--open",
                         help="Whether you want the problems to be opened directly in your browser or not [y/n].",
-                        type=str, default=False)
+                        type=str, default=True)
 
     parser.add_argument("-c", "--count",
                         help="The number of problems you wanna get.",
@@ -101,7 +101,7 @@ def filter_problems(min=DEFAULT_MIN_RATE, max=DEFAULT_MAX_RATE):
             available_problems.append(problem)
 
 
-def get_the_problems(problems_cnt=DEFAULT_PROBLEMS_CNT, open=False):
+def get_the_problems(problems_cnt=DEFAULT_PROBLEMS_CNT, open=True):
     random.shuffle(available_problems)
 
     for i in range(problems_cnt):
@@ -129,7 +129,7 @@ if __name__ == '__main__':
     assert mn >= 800 and mn <= 3500, 'Enter a min rating between 800 and 3500'
     assert mx >= 800 and mx <= 3500, 'Enter a max rating between 800 and 3500'
     assert mn <= mx, 'The max is less than min'
-    assert opn == 'y' or opn == 'n', "Enter \'y\' or \'n\'"
+    assert opn not in ['n', 'y', ''], "Enter 'y' or 'n'"
 
     filter_problems(mn, mx)
-    get_the_problems(cnt, True if opn == 'y' else False)
+    get_the_problems(cnt, True if opn != 'n' else False)
